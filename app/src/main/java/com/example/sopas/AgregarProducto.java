@@ -30,6 +30,7 @@ import java.util.Map;
 
 public class AgregarProducto extends AppCompatActivity {
     EditText eTxtProducto;
+
     ImageButton imgbtnScaner;
     ImageButton imgbtnSave;
     EditText eTxtNombre;
