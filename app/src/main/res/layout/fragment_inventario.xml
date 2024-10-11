@@ -84,7 +84,7 @@
         android:layout_marginTop="33dp"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="3dp"
+        android:layout_marginStart="33dp"
         android:layout_marginEnd="33dp"
         android:layout_below="@+id/scroll" />
 
@@ -95,19 +95,8 @@
         android:layout_marginTop="33dp"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="133dp"
+        android:layout_marginStart="233dp"
         android:layout_marginEnd="33dp"
         android:layout_below="@+id/scroll" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/imprimir"
-            android:text="Imprimir"
-            android:background="@drawable/corners"
-            android:layout_marginTop="33dp"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="273dp"
-            android:layout_marginEnd="23dp"
-            android:layout_below="@+id/scroll" />
 
         </RelativeLayout>
