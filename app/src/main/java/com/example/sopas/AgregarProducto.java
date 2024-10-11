@@ -80,6 +80,7 @@ public class AgregarProducto extends AppCompatActivity {
     // Method to check if barcode exists in database
     private void checkBarcodeExistence(String codigo) {
         dbRef.child(codigo).get().addOnCompleteListener(task -> {
+
             if (!task.isSuccessful()) {
                 // Error fetching data
                 Toast.makeText(AgregarProducto.this, "Error al verificar el código de barras", Toast.LENGTH_SHORT).show();
@@ -87,13 +88,22 @@ public class AgregarProducto extends AppCompatActivity {
             }
 
             if (task.getResult().exists()) {
-                // Barcode exists, show warning
-                Toast.makeText(AgregarProducto.this, "El código de barras ya existe.", Toast.LENGTH_SHORT).show();
+                // Obtener el nombre del producto del resultado
+                String nombreProducto = task.getResult().child("name").getValue(String.class);
+
+                // Si el nombre del producto está disponible, lo mostramos en el Toast
+                if (nombreProducto != null) {
+                    Toast.makeText(AgregarProducto.this, "El código de barras ya existe. Producto: " + nombreProducto, Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(AgregarProducto.this, "El código de barras ya existe.", Toast.LENGTH_SHORT).show();
+                }
+
                 eTxtProducto.requestFocus(); // Set focus on barcode field
             } else {
-                // Barcode doesn't exist, proceed with saving
+                // El código de barras no existe, proceder con guardar
                 saveProduct(codigo, nombre, cantidad, precio);
             }
+
         });
     }
 
