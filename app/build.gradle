@@ -39,4 +39,8 @@ dependencies {
     androidTestImplementation libs.espresso.core
     //PROPIAS
     implementation libs.circleimageview
+
+
+    //Para el chat
+    implementation("com.squareup.okhttp3:okhttp:4.12.0");
 }
