@@ -9,9 +9,6 @@
     android:layout_height="match_parent"
     tools:context=".AgregarProducto">
 
-
-
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="200dp"
@@ -40,11 +37,9 @@
         android:layout_height="wrap_content"
         android:text="Ingresa el nombre del producto:"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="164dp"
+        android:layout_marginTop="100dp"
         android:textSize="20sp"
-
         android:layout_below="@+id/tVTitulo"
-
         />
     <EditText
         android:id="@+id/eTxtNombreP"
@@ -53,15 +48,10 @@
         android:ems="10"
         android:inputType="text"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="14dp"
         android:hint="Nombre"
         android:layout_below="@id/tVInst2"
-
         />
-
-
-
-
     <TextView
         android:id="@+id/tVInst1"
         android:layout_width="wrap_content"
@@ -80,9 +70,18 @@
         android:hint="ejem: 5 "
         android:inputType="number"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="14dp"
         android:layout_below="@id/tVInst1"
         />
+    <TextView
+        android:id="@+id/tVInst9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:text="Ingresa el precio del producto:"
+        android:textSize="20sp"
+        android:layout_below="@id/eTxtNCantidad" />
     <EditText
         android:id="@+id/eTxtProducto"
         android:layout_width="wrap_content"
@@ -91,12 +90,20 @@
         android:inputType="none"
         android:hint="Escanea el código "
         android:layout_marginStart="20dp"
-        android:layout_marginTop="24dp"
-        android:layout_below="@id/eTxtNCantidad"
+        android:layout_marginTop="14dp"
+        android:layout_below="@id/tVInst11"
         android:focusable="false"
         android:clickable="false" />
 
-
+    <TextView
+        android:id="@+id/tVInst11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:text="Scanea el código:"
+        android:textSize="20sp"
+        android:layout_below="@id/precio" />
 
     <EditText
         android:id="@+id/precio"
@@ -106,37 +113,31 @@
         android:hint="Precio:"
         android:inputType="number"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="24dp"
-        android:layout_below="@id/eTxtProducto"
+        android:layout_marginTop="14dp"
+        android:layout_below="@id/tVInst9"
         />
-
-
-
-
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/imgbtnScaner"
-        android:text="Capturar"
+        android:text="Scan"
         android:background="@drawable/corners"
-        android:layout_marginTop="53dp"
+        android:layout_marginTop="33dp"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="33dp"
         android:layout_marginEnd="33dp"
-        android:layout_below="@+id/precio" />
+        android:layout_below="@+id/eTxtProducto" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/imgbtnSave"
         android:text="Guardar"
         android:background="@drawable/corners"
-        android:layout_marginTop="53dp"
+        android:layout_marginTop="33dp"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="233dp"
         android:layout_marginEnd="33dp"
-        android:layout_below="@+id/precio" />
-
-
+        android:layout_below="@+id/eTxtProducto" />
 
 
 </RelativeLayout>

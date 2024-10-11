@@ -1,14 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
+    android:layout_gravity="center"
     android:layout_height="match_parent"
     tools:context=".PerfilFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="0dp"
+        android:scaleX="4"
+        android:src="@drawable/headerbkg3" />
+    <!-- Imagen de perfil -->
+    <ImageView
+        android:id="@+id/profile_image"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/people"
+        android:scaleType="centerCrop"/>
+    <!-- Nombre del usuario -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Diego"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:layout_below="@id/profile_image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/tVInst2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Usuario:"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:textSize="24sp"
+        android:layout_below="@+id/user_name"
+        />
+
+    <!-- Descripción del atributo -->
+    <TextView
+        android:id="@+id/user_description2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="diego_empresa@gmail.com"
+        android:textSize="20sp"
+        android:textColor="@android:color/darker_gray"
+        android:layout_below="@id/tVInst3"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="20dp"/>
+    <TextView
+        android:id="@+id/tVInst3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Correo:"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:textSize="24sp"
+        android:layout_below="@+id/user_description"
+        />
+
+    <!-- Descripción del atributo -->
+    <TextView
+        android:id="@+id/user_description4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="contraseña124"
+        android:textSize="20sp"
+        android:textColor="@android:color/darker_gray"
+        android:layout_below="@id/tVInst4"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="20dp"/>
+    <TextView
+        android:id="@+id/tVInst4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contraseña:"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:textSize="24sp"
+        android:layout_below="@+id/user_description2"
+        />
+
+    <!-- Descripción del atributo -->
+    <TextView
+        android:id="@+id/user_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="D13go"
+        android:textSize="20sp"
+        android:textColor="@android:color/darker_gray"
+        android:layout_below="@id/tVInst2"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="20dp"/>
+
+
+</RelativeLayout>
