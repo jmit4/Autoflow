@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "664212931639",
+    "project_id": "autoflow-bb4f2",
+    "storage_bucket": "autoflow-bb4f2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:664212931639:android:78ccd4ba57c8c3efe6abb2",
+        "android_client_info": {
+          "package_name": "com.example.sopas"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAi2cs6Sfw_g1TRuCmk7nDtiR8gsXgHx-w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
