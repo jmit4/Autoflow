@@ -39,4 +39,6 @@ dependencies {
     androidTestImplementation libs.espresso.core
     //PROPIAS
     implementation libs.circleimageview
+    implementation 'com.google.firebase:firebase-firestore:25.1.0'
+
 }

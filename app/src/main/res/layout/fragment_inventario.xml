@@ -1,14 +1,273 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".InventarioFragment">
+    android:padding="0dp">
 
-    <!-- TODO: Update blank fragment layout -->
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="0dp"
+        android:scaleX="4"
+
+        android:src="@drawable/headerbkg3"/>
+
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/tuinventario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tu inventario"
+        android:textStyle="bold"
+        android:textSize="34sp"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="55dp" />
 
-</FrameLayout>
+
+
+
+
+    <!-- ScrollView para manejar tablas largas -->
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="200dp"
+        android:layout_below="@+id/tuinventario">
+
+        <TableLayout
+            android:id="@+id/tableLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="1"
+            android:padding="16dp">
+
+            <!-- Encabezados de la tabla -->
+            <TableRow>
+                <TextView
+                    android:text="Código de Barras"
+                    android:padding="8dp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"/>
+                <TextView
+                    android:text="Nombre"
+                    android:padding="8dp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="3"/>
+                <TextView
+                    android:text="Cantidad"
+                    android:padding="8dp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:text="Precio"
+                    android:padding="8dp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"/>
+            </TableRow>
+
+            <!-- Ejemplo de fila de producto -->
+            <TableRow>
+                <TextView
+                    android:text="1234567890123"
+                    android:padding="8dp"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"/>
+                <TextView
+                    android:text="Caja de Clavos"
+                    android:padding="8dp"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="3"/>
+                <TextView
+                    android:text="250"
+                    android:padding="8dp"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:text="$50.00"
+                    android:padding="8dp"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"/>
+            </TableRow>
+
+            <!-- Segunda fila de producto -->
+            <TableRow>
+                <TextView
+                    android:text="9876543210987"
+                    android:padding="8dp"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"/>
+                <TextView
+                    android:text="Paracetamol 500mg"
+                    android:padding="8dp"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="3"/>
+                <TextView
+                    android:text="100"
+                    android:padding="8dp"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:text="$30.00"
+                    android:padding="8dp"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"/>
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:text="9876543210987"
+                    android:padding="8dp"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"/>
+                <TextView
+                    android:text="Paracetamol 500mg"
+                    android:padding="8dp"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="3"/>
+                <TextView
+                    android:text="100"
+                    android:padding="8dp"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:text="$30.00"
+                    android:padding="8dp"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"/>
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:text="9876543210987"
+                    android:padding="8dp"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"/>
+                <TextView
+                    android:text="Paracetamol 500mg"
+                    android:padding="8dp"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="3"/>
+                <TextView
+                    android:text="100"
+                    android:padding="8dp"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:text="$30.00"
+                    android:padding="8dp"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"/>
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:text="9876543210987"
+                    android:padding="8dp"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"/>
+                <TextView
+                    android:text="Paracetamol 500mg"
+                    android:padding="8dp"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="3"/>
+                <TextView
+                    android:text="100"
+                    android:padding="8dp"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:text="$30.00"
+                    android:padding="8dp"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"/>
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:text="9876543210987"
+                    android:padding="8dp"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"/>
+                <TextView
+                    android:text="Paracetamol 500mg"
+                    android:padding="8dp"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="3"/>
+                <TextView
+                    android:text="100"
+                    android:padding="8dp"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:text="$30.00"
+                    android:padding="8dp"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"/>
+            </TableRow>
+
+
+        </TableLayout>
+    </ScrollView>
+
+    <androidx.appcompat.widget.AppCompatButton
+    android:id="@+id/Registrar"
+    android:text="Registrar"
+    android:background="@drawable/corners"
+    android:layout_marginTop="33dp"
+    android:layout_width="120dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="33dp"
+    android:layout_marginEnd="33dp"
+        android:layout_below="@+id/scroll"
+    />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/Estadisticas"
+        android:text="Estadisticas"
+        android:background="@drawable/corners"
+        android:layout_marginTop="33dp"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="233dp"
+        android:layout_marginEnd="33dp"
+        android:layout_below="@+id/scroll"
+        />
+
+
+</RelativeLayout>
