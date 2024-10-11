@@ -15,12 +15,15 @@
         android:theme="@style/Theme.Sopas"
         tools:targetApi="31">
         <activity
-            android:name=".Estadisticas"
+            android:name=".agregartarea"
             android:exported="false" />
-        <!-- Declaración de otras actividades -->
+        <activity
+            android:name=".Estadisticas"
+            android:exported="false" /> <!-- Declaración de otras actividades -->
         <activity
             android:name=".IAMainActivity"
             android:exported="false" />
+
         <activity
             android:name=".homeActivity"
             android:exported="false" /> <!-- Declarar AgregarProducto -->
