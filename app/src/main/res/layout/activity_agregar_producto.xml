@@ -42,9 +42,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="164dp"
         android:textSize="20sp"
-
         android:layout_below="@+id/tVTitulo"
-
         />
     <EditText
         android:id="@+id/eTxtNombreP"

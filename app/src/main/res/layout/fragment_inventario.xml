@@ -95,7 +95,7 @@
         android:layout_marginTop="33dp"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="233dp"
+        android:layout_marginStart="230dp"
         android:layout_marginEnd="33dp"
         android:layout_below="@+id/scroll" />
 

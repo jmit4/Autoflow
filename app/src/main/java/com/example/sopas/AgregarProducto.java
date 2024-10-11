@@ -23,6 +23,7 @@ import java.util.Map;
 public class AgregarProducto extends AppCompatActivity {
     EditText eTxtProducto, eTxtNombre, eTxtNCantidad, eTxtPrecio;
     Button imgbtnScaner, imgbtnSave;
+    String codigo, nombre, cantidad, precio;
 
     // Referencia a la base de datos
     DatabaseReference dbRef;
@@ -60,37 +61,62 @@ public class AgregarProducto extends AppCompatActivity {
         imgbtnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String codigo = eTxtProducto.getText().toString().trim();
-                String nombre = eTxtNombre.getText().toString().trim();
-                String cantidad = eTxtNCantidad.getText().toString().trim();
-                String precio = eTxtPrecio.getText().toString().trim();
+                 codigo = eTxtProducto.getText().toString().trim();
+                 nombre = eTxtNombre.getText().toString().trim();
+                 cantidad = eTxtNCantidad.getText().toString().trim();
+                 precio = eTxtPrecio.getText().toString().trim();
 
                 if (codigo.isEmpty() || nombre.isEmpty() || cantidad.isEmpty() || precio.isEmpty()) {
                     Toast.makeText(AgregarProducto.this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                // Formatear la fecha de registro actual
-                String fechaRegistro = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-
-                // Crear un objeto con los datos del producto
-                Map<String, Object> producto = new HashMap<>();
-                producto.put("barcode", codigo);
-                producto.put("name", nombre);
-                producto.put("quantity", Integer.parseInt(cantidad));
-                producto.put("price", Integer.parseInt(precio));
-                producto.put("registration_date", fechaRegistro);  // Fecha de registro
-
-                // Guardar el producto en la base de datos bajo el código de barras
-                dbRef.child(codigo).setValue(producto).addOnSuccessListener(aVoid -> {
-                    Toast.makeText(AgregarProducto.this, "Producto guardado exitosamente", Toast.LENGTH_SHORT).show();
-                    clearFields(); // Limpiar los campos
-                }).addOnFailureListener(e -> {
-                    Toast.makeText(AgregarProducto.this, "Error al guardar el producto", Toast.LENGTH_SHORT).show();
-                });
+                // Check if barcode already exists
+                checkBarcodeExistence(codigo);
             }
         });
     }
+
+    // Method to check if barcode exists in database
+    private void checkBarcodeExistence(String codigo) {
+        dbRef.child(codigo).get().addOnCompleteListener(task -> {
+            if (!task.isSuccessful()) {
+                // Error fetching data
+                Toast.makeText(AgregarProducto.this, "Error al verificar el código de barras", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (task.getResult().exists()) {
+                // Barcode exists, show warning
+                Toast.makeText(AgregarProducto.this, "El código de barras ya existe.", Toast.LENGTH_SHORT).show();
+                eTxtProducto.requestFocus(); // Set focus on barcode field
+            } else {
+                // Barcode doesn't exist, proceed with saving
+                saveProduct(codigo, nombre, cantidad, precio);
+            }
+        });
+    }
+
+    // Method to save product (assuming you have a saveProduct method)
+    private void saveProduct(String codigo, String nombre, String cantidad, String precio) {
+        // Formatear la fecha de registro actual
+        String fechaRegistro = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+
+        // Crear un objeto con los datos del producto
+        Map<String, Object> producto = new HashMap<>();
+        producto.put("barcode", codigo);
+        producto.put("name", nombre);
+        producto.put("quantity", Integer.parseInt(cantidad));
+        producto.put("price", Integer.parseInt(precio));
+        producto.put("registration_date", fechaRegistro);  // Fecha de registro
+        // Guardar el producto en la base de datos bajo el código de barras
+        dbRef.child(codigo).setValue(producto).addOnSuccessListener(aVoid -> {
+            Toast.makeText(AgregarProducto.this, "Producto guardado exitosamente", Toast.LENGTH_SHORT).show();
+            clearFields(); // Limpiar los campos
+        }).addOnFailureListener(e -> {
+            Toast.makeText(AgregarProducto.this, "Error al guardar el producto", Toast.LENGTH_SHORT).show();
+        });
+}
 
     // Método para limpiar los campos después de guardar
     private void clearFields() {

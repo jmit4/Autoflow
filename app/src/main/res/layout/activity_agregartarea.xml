@@ -1,114 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
+    android:layout_gravity="center"
     android:layout_height="match_parent"
     tools:context=".agregartarea">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageView"
         android:layout_width="200dp"
         android:layout_height="200dp"
+        android:layout_marginTop="0dp"
         android:scaleX="4"
-        android:src="@drawable/headerbkg3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:src="@drawable/headerbkg3" />
 
     <TextView
-        android:id="@+id/textView5"
-        android:layout_width="match_parent"
-        android:layout_height="39dp"
+        android:id="@+id/tVTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="102dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginEnd="57dp"
+        android:textColor="@color/black"
         android:text="Nueva Tarea"
-        android:textSize="30dp"
         android:textStyle="bold"
-        android:textColor="@color/black"
-        android:gravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="20dp"
-        tools:ignore="MissingConstraints" />
+        android:textSize="32sp" />
 
-    <EditText
-        android:id="@+id/editTextText"
+    <TextView
+        android:id="@+id/tVInst2"
         android:layout_width="wrap_content"
-        android:layout_height="48dp"
+        android:layout_height="wrap_content"
+        android:text="Nombre de la tarea:"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="90dp"
+        android:textSize="20sp"
+        android:layout_below="@+id/tVTitulo"
+        />
+    <EditText
+        android:id="@+id/eTxtNombreTask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="text"
-        android:hint="Name"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="29dp"
-        tools:layout_editor_absoluteY="156dp" />
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:hint="Nombre"
+        android:layout_below="@id/tVInst2"
+        />
 
     <TextView
-        android:id="@+id/textView6"
-        android:layout_width="140dp"
-        android:layout_height="36dp"
-        android:text="Título"
-        android:textColor="@color/black"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="29dp"
-        tools:layout_editor_absoluteY="94dp" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="134dp"
-        android:layout_height="27dp"
-        android:text="Encargado"
-        tools:layout_editor_absoluteX="29dp"
-        tools:layout_editor_absoluteY="269dp"
-        tools:ignore="MissingConstraints" />
+        android:id="@+id/tVInst1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:text="Número (ID) del encargado:"
+        android:textSize="20sp"
+        android:layout_below="@id/eTxtNombreTask" />
 
     <EditText
-        android:id="@+id/editTextText2"
+        android:id="@+id/eTxtNEmp"
         android:layout_width="wrap_content"
-        android:layout_height="48dp"
+        android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="text"
-        android:hint="Name"
-        tools:layout_editor_absoluteX="29dp"
-        tools:layout_editor_absoluteY="323dp"
-        tools:ignore="MissingConstraints" />
-
+        android:hint="ejem: 50870 "
+        android:inputType="number"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:layout_below="@id/tVInst1"
+        />
     <TextView
-        android:id="@+id/textView9"
-        android:layout_width="124dp"
-        android:layout_height="33dp"
-        android:text="Fecha"
-        tools:layout_editor_absoluteX="31dp"
-        tools:layout_editor_absoluteY="418dp"
-        tools:ignore="MissingConstraints" />
+        android:id="@+id/tVInst3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:text="Fecha límite para la tarea:"
+        android:textSize="20sp"
+        android:layout_below="@id/eTxtNEmp" />
+
+    <EditText
+        android:id="@+id/dispFech"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="none"
+        android:hint="Agrega una fecha ->"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:layout_below="@id/tVInst3"
+        android:focusable="false"
+        android:clickable="false" />
+
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button2"
-        android:layout_width="124dp"
-        android:layout_height="48dp"
+        android:id="@+id/btnCalendar"
         android:text="Calendario"
-        android:onClick="abrirCalendario"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="29dp"
-        tools:layout_editor_absoluteY="471dp"  />
-
-
-
+        android:background="@drawable/corners"
+        android:layout_marginTop="24dp"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="245dp"
+        android:layout_marginEnd="10dp"
+        android:layout_below="@+id/tVInst3" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnSaveTask"
+        android:text="Agregar tarea"
+        android:background="@drawable/corners"
+        android:layout_marginTop="53dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:text="Agregar Tarea"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="160dp"
-        tools:layout_editor_absoluteY="585dp"   />
+        android:layout_marginStart="130dp"
+        android:layout_marginEnd="33dp"
+        android:layout_below="@+id/dispFech" />
 
-    <TextView
-        android:id="@+id/dispfecha"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Fecha"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="169dp"
-        tools:layout_editor_absoluteY="491dp" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</RelativeLayout>
