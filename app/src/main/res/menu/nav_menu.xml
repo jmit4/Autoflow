@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn ="navigation_view">
+
+    <group
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/home"
+            android:title="Home">
+        </item>
+        <item
+            android:id="@+id/Perfil"
+            android:icon="@drawable/people"
+            android:title="Perfil">
+        </item>
+        <item
+            android:id="@+id/Inventario"
+            android:icon="@drawable/inventario"
+            android:title="Inventario">
+        </item>
+        <item
+            android:id="@+id/Tareas"
+            android:icon="@drawable/tareas"
+            android:title="Tareas">
+        </item>
+    </group>
+
+    <item android:title="">
+
+        <menu>
+            <group>
+                <item
+                    android:id="@+id/Empresa"
+                    android:icon="@drawable/empresa2"
+                    android:title="Mi empresa">
+                </item>
+                <item
+                    android:id="@+id/Empleados"
+                    android:icon="@drawable/people"
+                    android:title="Mis Empleados">
+                </item>
+            </group>
+        </menu>
+    </item>
+
+</menu>
