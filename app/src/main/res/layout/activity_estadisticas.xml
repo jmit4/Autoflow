@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Estadisticas">
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="0dp"
+        android:scaleX="4"
+        android:src="@drawable/headerbkg3" />
+
+
+    <TextView
+        android:id="@+id/textoestadisticas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginEnd="77dp"
+        android:textColor="@color/black"
+        android:text="Estadisticas"
+        android:textStyle="bold"
+        android:textSize="32sp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recycler_view"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="124dp"
+        android:layout_below="@+id/textoestadisticas"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/consulta"
+        android:text="Consulta"
+        android:background="@drawable/corners"
+        android:layout_width="422dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="609dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginEnd="33dp"
+         />
+
+
+
+
+
+
+
+</RelativeLayout>

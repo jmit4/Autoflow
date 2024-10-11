@@ -1,10 +1,12 @@
 package com.example.sopas;
 
+import android.content.Intent; // Importar Intent
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button; // Importar Button
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -12,76 +14,100 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class InventarioFragment extends Fragment {
 
-    private FirebaseFirestore db; // Firebase Firestore instance
+    private DatabaseReference dbRef; // Firebase Realtime Database reference
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        // Inflar el layout del fragmento
         View rootView = inflater.inflate(R.layout.fragment_inventario, container, false);
 
-        // Initialize Firestore
-        db = FirebaseFirestore.getInstance();
+        // Inicializar Realtime Database
+        dbRef = FirebaseDatabase.getInstance().getReference("products");
 
-        // Find TableLayout in the layout
+        // Encontrar el TableLayout en el layout
         TableLayout tableLayout = rootView.findViewById(R.id.tableLayout);
 
-        // Fetch data from Firestore and populate the table
-        db.collection("products")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                // Get product data
-                                String barcode = document.getString("barcode");
-                                String name = document.getString("name");
-                                String quantity = document.get("quantity").toString();
-                                String price = document.get("price").toString();
+        // Encontrar el botón de Registrar
+        Button btnRegistrar = rootView.findViewById(R.id.Registrar);
 
-                                // Create a new TableRow
-                                TableRow row = new TableRow(getActivity());
+        // Agregar un OnClickListener al botón de Registrar
+        btnRegistrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Crear un Intent para iniciar la actividad AgregarProducto
+                Intent intent = new Intent(getActivity(), AgregarProducto.class);
+                startActivity(intent); // Iniciar la actividad
+            }
+        });
 
-                                // Create TextViews for each column
-                                TextView barcodeTextView = new TextView(getActivity());
-                                barcodeTextView.setText(barcode);
-                                barcodeTextView.setPadding(8, 8, 8, 8);
+        Button Estadisticas = rootView.findViewById(R.id.Estadisticas);
 
-                                TextView nameTextView = new TextView(getActivity());
-                                nameTextView.setText(name);
-                                nameTextView.setPadding(8, 8, 8, 8);
+        // Agregar un OnClickListener al botón de Registrar
+        Estadisticas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Crear un Intent para iniciar la actividad AgregarProducto
+                Intent intent = new Intent(getActivity(), IAMainActivity.class);
+                startActivity(intent); // Iniciar la actividad
+            }
+        });
 
-                                TextView quantityTextView = new TextView(getActivity());
-                                quantityTextView.setText(quantity);
-                                quantityTextView.setPadding(8, 8, 8, 8);
+        // Obtener datos de Realtime Database y rellenar la tabla
+        dbRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot productSnapshot : dataSnapshot.getChildren()) {
+                    // Obtener datos del producto
+                    String barcode = productSnapshot.child("barcode").getValue(String.class);
+                    String name = productSnapshot.child("name").getValue(String.class);
+                    String quantity = productSnapshot.child("quantity").getValue().toString();
+                    String price = productSnapshot.child("price").getValue().toString();
 
-                                TextView priceTextView = new TextView(getActivity());
-                                priceTextView.setText("$" + price);
-                                priceTextView.setPadding(8, 8, 8, 8);
+                    // Crear una nueva fila de tabla
+                    TableRow row = new TableRow(getActivity());
 
-                                // Add TextViews to TableRow
-                                row.addView(barcodeTextView);
-                                row.addView(nameTextView);
-                                row.addView(quantityTextView);
-                                row.addView(priceTextView);
+                    // Crear TextViews para cada columna
+                    TextView barcodeTextView = new TextView(getActivity());
+                    barcodeTextView.setText(barcode);
+                    barcodeTextView.setPadding(8, 8, 8, 8);
 
-                                // Add TableRow to TableLayout
-                                tableLayout.addView(row);
-                            }
-                        } else {
-                            Log.d("Firestore", "Error getting documents: ", task.getException());
-                        }
-                    }
-                });
+                    TextView nameTextView = new TextView(getActivity());
+                    nameTextView.setText(name);
+                    nameTextView.setPadding(8, 8, 8, 8);
+
+                    TextView quantityTextView = new TextView(getActivity());
+                    quantityTextView.setText(quantity);
+                    quantityTextView.setPadding(8, 8, 8, 8);
+
+                    TextView priceTextView = new TextView(getActivity());
+                    priceTextView.setText("$" + price);
+                    priceTextView.setPadding(8, 8, 8, 8);
+
+                    // Agregar TextViews a la fila
+                    row.addView(barcodeTextView);
+                    row.addView(nameTextView);
+                    row.addView(quantityTextView);
+                    row.addView(priceTextView);
+
+                    // Agregar la fila a la TableLayout
+                    tableLayout.addView(row);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d("RealtimeDatabase", "Error getting data: " + databaseError.getMessage());
+            }
+        });
 
         return rootView;
     }
